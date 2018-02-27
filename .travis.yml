@@ -98,7 +98,7 @@ after_success:
       node-pre-gyp publish --target_arch=$TARGET_ARCH;
     fi
 
-  - if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_PULL_REQUEST == "false" ] && [ $TRAVIS_OS_NAME == "linux" ] && [ $NODE_VERSION == "6" ] && [ $TARGET_ARCH == "x64" ]; then
+  - if [ $TRAVIS_BRANCH == "master" ] && [ $TRAVIS_PULL_REQUEST == "false" ] && [ $TRAVIS_OS_NAME == "linux" ] && [ $NODE_VERSION == "8.9" ] && [ $TARGET_ARCH == "x64" ]; then
       .travis/deploy-docs.sh;
     fi
 
