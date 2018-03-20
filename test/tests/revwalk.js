@@ -158,6 +158,14 @@ describe("Revwalk", function() {
       });
   });
 
+  it("can get repository from a commit from fileHistoryWalk", function() {
+    var test = this;
+    return test.walker.fileHistoryWalk("include/functions/copy.h", 1)
+      .then(function(results) {
+        assert.equal(test.repository, results[0].commit.repo);
+      });
+  });
+
   it("can get the history of a file", function() {
     var test = this;
     var magicShas = [

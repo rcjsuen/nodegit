@@ -259,9 +259,13 @@ void GitRevwalk::FileHistoryWalkWorker::HandleOKCallback()
     unsigned int size = baton->out->size();
     Local<Array> result = Nan::New<Array>(size);
     for (unsigned int i = 0; i < size; i++) {
+      Local<v8::Object> commit = GitCommit::New(batonResult->first, true);
+      git_repository *repo = git_revwalk_repository(baton->walk);
+      Nan::Set(commit, Nan::New("repo").ToLocalChecked(), GitRepository::New(repo, true));
+
       Local<v8::Object> historyEntry = Nan::New<Object>();
       std::pair<git_commit *, std::pair<char *, git_delta_t> > *batonResult = baton->out->at(i);
-      Nan::Set(historyEntry, Nan::New("commit").ToLocalChecked(), GitCommit::New(batonResult->first, true));
+      Nan::Set(historyEntry, Nan::New("commit").ToLocalChecked(), commit);
       Nan::Set(historyEntry, Nan::New("status").ToLocalChecked(), Nan::New<Number>(batonResult->second.second));
       if (batonResult->second.second == GIT_DELTA_RENAMED) {
         char *namePair = batonResult->second.first;
