@@ -848,7 +848,36 @@
       "ignore": true
     },
     "describe": {
-      "ignore": true
+      "functions": {
+        "git_describe_commit": {
+          "args": {
+            "result": {
+              "isReturn": true
+            },
+            "opts": {
+              "isOptional": true
+            }
+          },
+          "isAsync": true
+        },
+        "git_describe_format": {
+          "ignore": true
+        },
+        "git_describe_result_free": {
+          "ignore": true
+        },
+        "git_describe_workdir": {
+          "args": {
+            "out": {
+              "isReturn": true
+            },
+            "opts": {
+              "isOptional": true
+            }
+          },
+          "isAsync": true
+        }
+      }
     },
     "diff": {
       "cDependencies": [
