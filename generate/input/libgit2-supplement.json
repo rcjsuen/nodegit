@@ -704,6 +704,10 @@
               "ignore": true
             },
             {
+              "type": "git_push_transfer_progress_cb",
+              "name": "push_transfer_progress"
+            },
+            {
               "type": "git_push_update_reference_cb",
               "name": "push_update_reference"
             },
